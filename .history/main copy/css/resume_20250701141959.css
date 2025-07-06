@@ -1,0 +1,433 @@
+/* Global Resets and Base Styles - Using Provided Palette */
+:root {
+  --primary-color: #007bff; /* A nice blue for highlights */
+  --secondary-color: #6c757d; /* Grey for secondary text */
+  --dark-bg: #1a1a1a; /* Dark background for sections */
+  --light-bg: #ffffff; /* Light background for sections (not primarily used in this dark layout) */
+  --text-color-dark: #f0f0f0; /* Light text on dark backgrounds */
+  --text-color-light: #333333; /* Dark text on light backgrounds (not primarily used) */
+  --border-color: #444444; /* Adjusted for better contrast on dark bg */
+  --divider-color: #0056b3; /* A darker blue for dividers */
+  --card-bg-dark: #2a2a2a; /* Card background in dark sections */
+  --card-bg-light: #f8f9fa; /* Card background in light sections (not primarily used) */
+  --highlight-text: #007bff; /* Color for highlighted text */
+
+  /* Derived or adjusted for theme consistency */
+  --button-hover-bg: #0056b3; /* Darker primary blue */
+  --section-bg: var(--dark-bg); /* Main content background */
+  --card-border: var(--border-color);
+  --shadow-color: rgba(0, 0, 0, 0.5); /* Slightly less intense than previous */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #111111; /* Even darker base for the whole page */
+  color: var(--text-color-dark);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+/* Main Layout */
+.main-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  max-width: 1400px;
+  width: 100%;
+}
+
+/* Left Section - Main Content Wrapper */
+.glass-wrapper { /* Keeping the class name as it is in HTML */
+  flex: 3;
+  background-color: var(--section-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 4px 15px var(--shadow-color);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: hidden;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.3s ease;
+  z-index: 10;
+}
+
+.back-button:hover {
+  background: var(--button-hover-bg);
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.header p {
+  font-size: 1rem;
+  color: var(--secondary-color); /* Using secondary-color for sub-text */
+  opacity: 0.9;
+}
+
+/* Project Image */
+.project-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px var(--shadow-color);
+  border: 1px solid var(--border-color);
+}
+
+/* General Section Styling */
+section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: var(--primary-color); /* Section headings in primary blue */
+  border-bottom: 1px solid var(--divider-color); /* Using divider color for lines */
+  padding-bottom: 5px;
+}
+
+section p {
+  margin-bottom: 10px;
+}
+
+/* Video Demo */
+.video-demo video {
+  width: 100%;
+  max-height: 450px;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px var(--shadow-color);
+  background-color: black;
+  border: 1px solid var(--border-color);
+}
+
+/* Feature List & Tech Stack List */
+.feature-list,
+.tech-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.feature-list li,
+.tech-item {
+  background-color: var(--card-bg-dark); /* Using card-bg-dark for list items */
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: var(--text-color-dark);
+  transition: background-color 0.3s ease;
+}
+
+.feature-list li:hover,
+.tech-item:hover {
+  background-color: var(--button-hover-bg); /* Hover with darker primary blue */
+}
+
+.tech-item i {
+  font-size: 1.3rem;
+  color: var(--highlight-text); /* Icons in highlight blue */
+}
+
+/* Project Meta */
+.project-meta ul {
+  list-style: none;
+  padding: 0;
+}
+
+.project-meta li {
+  margin-bottom: 5px;
+  font-size: 1rem;
+  color: var(--text-color-dark); /* Ensure text color is applied */
+}
+
+.project-meta strong {
+  color: white; /* Still pure white for strong emphasis */
+}
+
+/* Call to Action Button */
+.cta-button {
+  display: inline-block;
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin-top: 15px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cta-button:hover {
+  background: var(--button-hover-bg);
+  transform: translateY(-2px);
+}
+
+/* Right Section - Portfolio */
+.portfolio-section {
+  flex: 1;
+  background-color: var(--section-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 4px 15px var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.portfolio-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--primary-color); /* Portfolio title in primary blue */
+  border-bottom: 1px solid var(--divider-color);
+  padding-bottom: 5px;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+/* Portfolio Card */
+.card {
+  background-color: var(--card-bg-dark);
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 20px var(--shadow-color);
+}
+
+.card-inner {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-front {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  overflow: hidden;
+  background-color: #000;
+}
+
+.card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-image {
+  transform: scale(1.03);
+}
+
+.card-details {
+  padding: 15px;
+  flex-grow: 1;
+}
+
+.card-details h3 {
+  font-size: 1.25rem;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.card-details p {
+  font-size: 0.9rem;
+  color: var(--secondary-color); /* Card text uses secondary color */
+  opacity: 0.8;
+}
+
+.portfolio-category {
+  display: inline-block;
+  background: var(--primary-color);
+  color: white;
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  border-radius: 3px;
+  margin: 15px;
+  align-self: flex-start;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  text-transform: uppercase;
+}
+
+.portfolio-category:hover {
+  background: var(--button-hover-bg);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 1024px) {
+  .main-layout {
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px;
+  }
+
+  .glass-wrapper,
+  .portfolio-section {
+    padding: 25px;
+  }
+
+  .header h1 {
+    font-size: 2.1rem;
+  }
+
+  section h2 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+
+  .glass-wrapper {
+    padding: 20px;
+  }
+
+  .header h1 {
+    font-size: 1.7rem;
+  }
+
+  .header p {
+    font-size: 0.95rem;
+  }
+
+  section h2 {
+    font-size: 1.4rem;
+  }
+
+  .feature-list,
+  .tech-list {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .feature-list li,
+  .tech-item {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .tech-item i {
+    font-size: 1.1rem;
+  }
+
+  .cta-button {
+    padding: 10px 18px;
+    font-size: 0.95rem;
+  }
+
+  .portfolio-section {
+    padding: 20px;
+  }
+
+  .portfolio-title {
+    font-size: 1.7rem;
+  }
+
+  .card-details h3 {
+    font-size: 1.1rem;
+  }
+
+  .card-details p {
+    font-size: 0.85rem;
+  }
+
+  .portfolio-category {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    margin: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .back-button {
+    top: 15px;
+    left: 15px;
+    padding: 7px 10px;
+    font-size: 0.85rem;
+  }
+
+  .glass-wrapper {
+    padding-top: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .header h1 {
+    font-size: 1.4rem;
+  }
+
+  section h2 {
+    font-size: 1.2rem;
+  }
+}

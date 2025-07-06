@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProfitPulse AI – Project Showcase</title>
+  <link rel="stylesheet" href="css/shop.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body>
+  <div class="main-layout">
+    <!-- Left Section -->
+    <div class="glass-wrapper">
+      <button class="back-button" onclick="window.history.back();">← Back</button>
+
+      <header class="header">
+        <h1>E-commerce Dress Shop Web Application</h1>
+      </header>
+
+      <img src="img/Screenshot from 2025-05-22 13-01-13.png" alt="ProfitPulse AI Screenshot" class="project-image" />
+
+      <section class="description">
+        <p>
+          The E-commerce Dress Shop is a web application I developed to allow users to browse, search, and purchase dresses online. The platform features detailed product listings, shopping cart functionality, and order processing, with a focus on delivering a seamless, secure, and visually appealing shopping experience.
+
+
+        </p>
+      </section>
+
+      <section class="video-demo">
+        <h2>🎬 Demo Preview</h2>
+        <video controls>
+          <source src="video/Screencast from 2025-06-11 11-12-28.webm" type="video/webm" />
+          Your browser does not support the video tag.
+        </video>
+      </section>
+
+     <section class="project-section">
+
+
+  <h2>🛍️ E-commerce Dress Shop Web Application</h2>
+  <p><strong>Role:</strong> Full Stack Developer | <strong>Year:</strong> 2025</p>
+  
+  <p>
+    The E-commerce Dress Shop is a web application I developed to allow users to browse, search, and purchase dresses online. The platform features detailed product listings, shopping cart functionality, and order processing, focusing on delivering a seamless, secure, and visually appealing shopping experience.
+  </p>
+
+  <h3>✅ Key Features</h3>
+  <ul class="feature-list">
+    <li>Product catalog with detailed pages for each dress</li>
+    <li>Shopping cart and order management</li>
+    <li>User authentication and login system</li>
+    <li>Responsive design for mobile and desktop users</li>
+    <li>RESTful API integrations for dynamic data handling</li>
+  </ul>
+
+  <section class="tech-stack">
+    <h3>🔧 Tech Stack</h3>
+    <ul class="tech-list">
+      <li class="tech-item">
+        <i class="fab fa-html5"></i>
+        <span>HTML5, CSS3, and JavaScript — Core web technologies for structuring, styling, and adding interactivity to the application.</span>
+      </li>
+      <li class="tech-item">
+        <i class="fab fa-django"></i>
+        <span>Django REST Framework — A robust and secure backend framework for building RESTful APIs using Python and Django.</span>
+      </li>
+      <li class="tech-item">
+        <i class="fas fa-database"></i>
+        <span>SQLite3 — A relational database management system (RDBMS) for storing and managing data with support for complex queries and transactions.</span>
+      </li>
+    </ul>
+  </section>
+
+  <h3>👨‍💻 My Role</h3>
+  <p>
+    I handled the entire development process—from designing the database schema and coding backend APIs to building the frontend interface. I focused on delivering a user-friendly UI and ensuring smooth interactions across all parts of the application.
+  </p>
+</section>
+
+
+      <section class="project-meta">
+        <h2>📝 Project Info</h2>
+        <ul>
+          <li><strong>Year:</strong> 2025</li>
+          <li><strong>Role:</strong> Full Stack Developer</li>
+          <li><strong>Status:</strong> ✅ Completed</li>
+        </ul>
+      </section>
+
+      <section class="project-links">
+        <a href="https://live-demo-link.com" target="_blank" class="cta-button">🚀 Launch Demo</a>
+      </section>
+    </div>
+
+    <!-- Right Portfolio Section -->
+    <section class="portfolio-section">
+      <h2 class="portfolio-title">MY PORTFOLIO</h2>
+      <div class="portfolio-grid">
+        <!-- Resume Builder Card -->
+        <div class="card">
+          <div class="card-inner">
+            <a href="resume.html" class="card-link">
+              <div class="card-front">
+                <img src="img/Screenshot from 2025-06-24 16-33-13.png" alt="Resume Builder Screenshot" class="card-image" />
+              </div>
+              <div class="card-details">
+                <h3>Resume Builder</h3>
+                <p>Your details are automatically converted into a portfolio website.</p>
+              </div>
+            </a>
+          </div>
+          <a href="resume.html" class="portfolio-category">Web Development</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Select all elements that should be revealed on scroll
+      const revealElements = document.querySelectorAll(
+        '.description, .video-demo, .feature-list, .tech-stack, .project-meta, .project-links, .card'
+      );
+
+      // Function to check if an element is in the viewport
+      function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+          rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.left <= (window.innerWidth || document.documentElement.clientWidth) &&
+          rect.bottom >= 0 &&
+          rect.right >= 0
+        );
+      }
+
+      // Function to handle scroll event
+      function handleScrollReveal() {
+        revealElements.forEach(el => {
+          if (isElementInViewport(el)) {
+            el.classList.add('reveal');
+          }
+          // Optionally: if you want them to hide again when scrolled out of view, add an else condition
+          // else {
+          //   el.classList.remove('reveal');
+          // }
+        });
+      }
+
+      // Initial check on load
+      handleScrollReveal();
+
+      // Add scroll event listener
+      window.addEventListener('scroll', handleScrollReveal);
+    });
+  </script>
+</body>
+
+</html>

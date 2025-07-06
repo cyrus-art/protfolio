@@ -1,0 +1,525 @@
+/* Global Resets and Base Styles - White, Blue, and Lite Black Theme */
+:root {
+  --primary-bg: #ffffff; /* Dominant white background */
+  --secondary-bg: #f8f9fa; /* Very light grey for subtle variations */
+  --tertiary-bg: #e9ecef; /* A slightly darker light grey for contrast */
+
+  --primary-color: #007bff; /* Vibrant blue for highlights and CTAs */
+  --darker-blue: #0056b3; /* Darker blue for hover states and strong accents */
+
+  --text-dark: #343a40; /* "Lite black" for main text, a dark grey */
+  --text-muted: #6c757d; /* Muted grey for secondary text */
+
+  --border-color: #dee2e6; /* Light grey for borders */
+  --shadow-color: rgba(0, 0, 0, 0.1); /* Very light, subtle shadow */
+
+  /* Derived for consistency */
+  --card-shadow: rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--secondary-bg); /* Use light grey background for body */
+  color: var(--text-dark); /* Default text color */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+/* Main Layout */
+.main-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  max-width: 1400px;
+  width: 100%;
+}
+
+/* --- ANIMATION 1: Fade-in on Load for Main Containers & Header Elements --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Apply fade-in to main sections */
+.glass-wrapper { /* Retaining class name from HTML */
+  flex: 3;
+  background-color: var(--primary-bg); /* White background */
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 4px 15px var(--shadow-color);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: hidden;
+  /* Animation properties for the container itself */
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards; /* Faster fade-in */
+  animation-delay: 0.2s;
+}
+
+.portfolio-section {
+  flex: 1;
+  background-color: var(--primary-bg); /* White background */
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 4px 15px var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* Animation properties for the container itself */
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards; /* Same animation */
+  animation-delay: 0.4s; /* Longer delay for the second main section */
+}
+
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: var(--primary-color);
+  color: white; /* White text on blue button */
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.3s ease;
+  z-index: 10;
+  opacity: 0; /* Start invisible */
+  animation: fadeIn 0.5s ease-out forwards; /* Fade in directly */
+  animation-delay: 0.1s;
+}
+
+.back-button:hover {
+  background: var(--darker-blue);
+}
+
+/* Header elements with their own staggered animations */
+.header {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+  color: var(--primary-color); /* H1 in blue */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0; /* Start invisible for animation */
+  animation: slideInFromTop 0.8s ease-out forwards;
+  animation-delay: 0.6s; /* Delay after main sections appear */
+}
+
+.header p {
+  font-size: 1rem;
+  color: var(--text-muted); /* Muted grey for description */
+  opacity: 0.9;
+  opacity: 0; /* Start invisible for animation */
+  animation: slideInFromBottom 0.8s ease-out forwards;
+  animation-delay: 0.8s; /* Longer delay for paragraph */
+}
+
+/* Project Image */
+.project-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px var(--shadow-color);
+  border: 1px solid var(--border-color);
+}
+
+/* --- ANIMATION 2: Scroll-Triggered Section Reveal --- */
+/* Initial state for elements to be revealed */
+.description,
+.video-demo,
+.feature-list,
+.tech-stack,
+.project-meta,
+.project-links,
+.card {
+  opacity: 0;
+  transform: translateY(30px); /* Start slightly below final position */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition */
+}
+
+/* Class added by JavaScript when element is in view */
+.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* General Section Styling */
+section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: var(--text-dark); /* Section headings in "lite black" */
+  border-bottom: 1px solid var(--border-color); /* Light border */
+  padding-bottom: 5px;
+}
+
+section p {
+  margin-bottom: 10px;
+  color: var(--text-dark); /* Paragraph text in "lite black" */
+}
+
+/* Video Demo */
+.video-demo video {
+  width: 100%;
+  max-height: 450px;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px var(--shadow-color);
+  background-color: var(--text-dark); /* Dark background for video */
+  border: 1px solid var(--border-color);
+}
+
+/* Feature List & Tech Stack List */
+.feature-list,
+.tech-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.feature-list li,
+.tech-item {
+  background-color: var(--tertiary-bg); /* Slightly darker light grey for list items */
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.feature-list li:hover,
+.tech-item:hover {
+  background-color: var(--primary-color);
+  color: white; /* White text on blue hover */
+  border-color: var(--primary-color);
+  transform: translateY(-2px); /* Slight lift */
+}
+
+.tech-item i {
+  font-size: 1.3rem;
+  color: var(--primary-color); /* Icons in blue */
+  transition: color 0.3s ease;
+}
+
+.tech-item:hover i {
+  color: white; /* White icons on blue hover */
+}
+
+/* Project Meta */
+.project-meta ul {
+  list-style: none;
+  padding: 0;
+}
+
+.project-meta li {
+  margin-bottom: 5px;
+  font-size: 1rem;
+  color: var(--text-dark);
+}
+
+.project-meta strong {
+  color: var(--text-dark); /* Strong text also in "lite black" */
+}
+
+/* Call to Action Button */
+.cta-button {
+  display: inline-block;
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin-top: 15px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cta-button:hover {
+  background: var(--darker-blue);
+  transform: translateY(-2px);
+}
+
+/* Right Section - Portfolio */
+/* (Portfolio section styles defined above with animation properties) */
+
+.portfolio-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--primary-color); /* Portfolio title in blue */
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 5px;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+/* --- ANIMATION 2: Enhanced Hover Effect for Portfolio Cards (continues) --- */
+.card {
+  background-color: var(--primary-bg); /* White background for cards */
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Added border-color transition */
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* More pronounced lift */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+  border-color: var(--primary-color); /* Blue border on hover */
+}
+
+.card-inner {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-front {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  overflow: hidden;
+  background-color: var(--tertiary-bg); /* Light grey placeholder for image */
+}
+
+.card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-image {
+  transform: scale(1.05); /* Slight zoom on image */
+}
+
+.card-details {
+  padding: 15px;
+  flex-grow: 1;
+}
+
+.card-details h3 {
+  font-size: 1.25rem;
+  margin-bottom: 5px;
+  color: var(--primary-color); /* Card title in blue */
+}
+
+.card-details p {
+  font-size: 0.9rem;
+  color: var(--text-muted); /* Card text in muted grey */
+  opacity: 0.9;
+}
+
+.portfolio-category {
+  display: inline-block;
+  background: var(--tertiary-bg); /* Light grey background for category */
+  color: var(--text-dark); /* "Lite black" text for category */
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  border-radius: 3px;
+  margin: 15px;
+  align-self: flex-start;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Added border-color transition */
+  text-transform: uppercase;
+  border: 1px solid var(--border-color);
+}
+
+.portfolio-category:hover {
+  background: var(--primary-color);
+  color: white; /* White text on blue hover */
+  border-color: var(--primary-color); /* Blue border on hover */
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 1024px) {
+  .main-layout {
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px;
+  }
+
+  .glass-wrapper,
+  .portfolio-section {
+    padding: 25px;
+  }
+
+  .header h1 {
+    font-size: 2.1rem;
+  }
+
+  section h2 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+
+  .glass-wrapper {
+    padding: 20px;
+  }
+
+  .header h1 {
+    font-size: 1.7rem;
+  }
+
+  .header p {
+    font-size: 0.95rem;
+  }
+
+  section h2 {
+    font-size: 1.4rem;
+  }
+
+  .feature-list,
+  .tech-list {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .feature-list li,
+  .tech-item {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .tech-item i {
+    font-size: 1.1rem;
+  }
+
+  .cta-button {
+    padding: 10px 18px;
+    font-size: 0.95rem;
+  }
+
+  .portfolio-section {
+    padding: 20px;
+  }
+
+  .portfolio-title {
+    font-size: 1.7rem;
+  }
+
+  .card-details h3 {
+    font-size: 1.1rem;
+  }
+
+  .card-details p {
+    font-size: 0.85rem;
+  }
+
+  .portfolio-category {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    margin: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .back-button {
+    top: 15px;
+    left: 15px;
+    padding: 7px 10px;
+    font-size: 0.85rem;
+  }
+
+  .glass-wrapper {
+    padding-top: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .header h1 {
+    font-size: 1.4rem;
+  }
+
+  section h2 {
+    font-size: 1.2rem;
+  }
+}

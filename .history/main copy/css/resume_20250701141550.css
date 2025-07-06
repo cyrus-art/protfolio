@@ -1,0 +1,417 @@
+/* Global Resets and Base Styles */
+:root {
+  --background-dark: #1a1a2e; /* Dark blue/purple */
+  --glass-bg: rgba(255, 255, 255, 0.1); /* Slightly transparent white for glass */
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --text-color: #e0e0e0; /* Light gray text */
+  --accent-color: #0f4c75; /* A complementary blue */
+  --secondary-accent: #3282b8; /* Lighter blue */
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --button-hover-bg: #1b262c; /* Darker blue on hover */
+  --card-bg: rgba(255, 255, 255, 0.08); /* Slightly less transparent for cards */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, var(--background-dark), #0f0f1d);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Main Layout */
+.main-layout {
+  display: flex;
+  flex-direction: row; /* Default to row for larger screens */
+  gap: 30px;
+  max-width: 1400px; /* Max width for the entire content area */
+  width: 100%;
+}
+
+/* Left Section - Glass Wrapper */
+.glass-wrapper {
+  flex: 3; /* Takes more space */
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px); /* Glassmorphism effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 32px var(--shadow-color);
+  position: relative; /* For back button positioning */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Spacing between sections */
+  overflow: hidden; /* Ensures border-radius applies to children */
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+  z-index: 10; /* Ensure it's above other content */
+}
+
+.back-button:hover {
+  background: var(--button-hover-bg);
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding-top: 20px; /* Space for back button */
+}
+
+.header h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+  color: white;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.header p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+/* Project Image */
+.project-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+/* General Section Styling */
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: white;
+}
+
+section p {
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+/* Video Demo */
+.video-demo video {
+  width: 100%;
+  max-height: 450px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px var(--shadow-color);
+  background-color: black; /* Fallback for transparency */
+}
+
+/* Feature List & Tech Stack List */
+.feature-list,
+.tech-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.feature-list li,
+.tech-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.feature-list li:hover,
+.tech-item:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tech-item i {
+  font-size: 1.5rem;
+  color: var(--secondary-accent);
+}
+
+/* Project Meta */
+.project-meta ul {
+  list-style: none;
+  padding: 0;
+}
+
+.project-meta li {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.project-meta strong {
+  color: white;
+}
+
+/* Call to Action Button */
+.cta-button {
+  display: inline-block;
+  background: var(--accent-color);
+  color: white;
+  text-decoration: none;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+  box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.cta-button:hover {
+  background: var(--button-hover-bg);
+  transform: translateY(-2px);
+}
+
+/* Right Section - Portfolio */
+.portfolio-section {
+  flex: 1; /* Takes less space */
+  background: rgba(255, 255, 255, 0.05); /* Slightly darker glass for distinction */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 32px var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.portfolio-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column by default */
+  gap: 20px;
+}
+
+/* Portfolio Card */
+.card {
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.card-inner {
+  flex-grow: 1; /* Allows card-inner to expand */
+  display: flex;
+  flex-direction: column;
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-front {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  overflow: hidden;
+}
+
+.card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-image {
+  transform: scale(1.05);
+}
+
+.card-details {
+  padding: 15px;
+  flex-grow: 1; /* Allows details to take available space */
+}
+
+.card-details h3 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.card-details p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.portfolio-category {
+  display: inline-block;
+  background: var(--secondary-accent);
+  color: white;
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border-radius: 5px;
+  margin: 15px; /* Adjust margin as needed */
+  align-self: flex-start; /* Align to the start of the flex container */
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.portfolio-category:hover {
+  background: #256d9a; /* Slightly darker secondary accent */
+}
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .main-layout {
+    flex-direction: column; /* Stack columns on smaller screens */
+    gap: 20px;
+    padding: 15px;
+  }
+
+  .glass-wrapper,
+  .portfolio-section {
+    padding: 25px;
+  }
+
+  .header h1 {
+    font-size: 2.2rem;
+  }
+
+  section h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+
+  .glass-wrapper {
+    padding: 20px;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  .header p {
+    font-size: 1rem;
+  }
+
+  section h2 {
+    font-size: 1.6rem;
+  }
+
+  .feature-list,
+  .tech-list {
+    flex-direction: column; /* Stack features/tech items on small screens */
+    gap: 10px;
+  }
+
+  .feature-list li,
+  .tech-item {
+    padding: 10px 15px;
+    font-size: 0.95rem;
+  }
+
+  .tech-item i {
+    font-size: 1.2rem;
+  }
+
+  .cta-button {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+
+  .portfolio-section {
+    padding: 20px;
+  }
+
+  .portfolio-title {
+    font-size: 1.8rem;
+  }
+
+  .card-details h3 {
+    font-size: 1.2rem;
+  }
+
+  .card-details p {
+    font-size: 0.9rem;
+  }
+
+  .portfolio-category {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    margin: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .back-button {
+    top: 15px;
+    left: 15px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .glass-wrapper {
+    padding-top: 50px; /* More space for back button */
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .header h1 {
+    font-size: 1.6rem;
+  }
+
+  section h2 {
+    font-size: 1.4rem;
+  }
+}
